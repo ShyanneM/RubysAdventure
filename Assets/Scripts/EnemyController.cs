@@ -16,13 +16,14 @@ public class EnemyController : MonoBehaviour
     bool broken = true;
     
     Animator animator;
-    
+    KillCounter killCounterScript;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         timer = changeTime;
         animator = GetComponent<Animator>();
+		killCounterScript=GameObject.Find("KCO").GetComponent<KillCounter>();
     }
 
     void Update()
@@ -87,5 +88,26 @@ public class EnemyController : MonoBehaviour
         animator.SetTrigger("Fixed");
         
         smokeEffect.Stop();
+		killCounterScript.AddKill();
+		CheckWinCondition();
+    }
+	void CheckWinCondition() //new
+    {
+        GameObject[] enemyBots = GameObject.FindGameObjectsWithTag("EnemyBot"); // enemy bots are tagged with "EnemyBot"
+
+        bool allFixed = true;
+        foreach(GameObject bot in enemyBots)
+        {
+            if (bot.GetComponent<EnemyController>().broken)
+            {
+                allFixed = false;
+                break;
+            }
+        }
+
+        if (allFixed)
+        {
+            FindObjectOfType<GameManager>().EndGame(true); // Notify GameManager that the player has won
+        }
     }
 }

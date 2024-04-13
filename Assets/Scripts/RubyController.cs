@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RubyController : MonoBehaviour
-{
+{ 	public int Score;
     public float speed = 3.0f;
     
     public int maxHealth = 5;
     
     public GameObject projectilePrefab;
-    
+    public GameObject damagePrefab;
+	public GameObject healPrefab;
     public AudioClip throwSound;
     public AudioClip hitSound;
     
@@ -102,13 +103,22 @@ public class RubyController : MonoBehaviour
             
             isInvincible = true;
             invincibleTimer = timeInvincible;
-            
+             GameObject damageObject = Instantiate(damagePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
             PlaySound(hitSound);
         }
-        
+		if (amount > 0)
+        {
+            
+             GameObject healObject = Instantiate(healPrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
+            
+        }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         
         UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
+		if (currentHealth <= 0)
+        {
+            FindObjectOfType<GameManager>().PlayerLost(); // Notify GameManager when player loses
+        }
     }
     
     void Launch()
