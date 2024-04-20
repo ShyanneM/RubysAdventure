@@ -97,7 +97,7 @@ public class RubyController : MonoBehaviour
                 }
             }
         }
-		//slow  by Shyanne Murdock
+		//slow 
         if (isSlowed)
         {
             slowTimer += Time.deltaTime;
@@ -130,7 +130,7 @@ public class RubyController : MonoBehaviour
 
         rigidbody2d.MovePosition(position);
     }
-	//slow  by Shyanne Murdock
+	//slow 
     public void ApplySlowEffect()
     {
         if (!isSlowed)
