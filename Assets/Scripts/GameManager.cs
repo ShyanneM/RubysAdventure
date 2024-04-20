@@ -48,12 +48,15 @@ public class GameManager : MonoBehaviour
             playerObject.GetComponent<RubyController>().enabled = false; // Disable player movement
         }
     }
-
+	
+	
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R) && gameEnded)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Restart the game
+			FlowerScore.scoreCount = 0;
         }
+		
     }
 }

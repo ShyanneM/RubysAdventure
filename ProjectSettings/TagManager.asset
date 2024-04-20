@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RubyController
   - EnemyBot
+  - Flower
   layers:
   - Default
   - TransparentFX

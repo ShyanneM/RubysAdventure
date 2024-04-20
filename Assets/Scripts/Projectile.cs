@@ -26,7 +26,24 @@ public class Projectile : MonoBehaviour
     
     void OnCollisionEnter2D(Collision2D other)
     {
-        EnemyController e = other.collider.GetComponent<EnemyController>();
+        //rules for projectile written by AG
+        BeeController bee = other.collider.GetComponent<BeeController>();
+        if (bee != null)
+        {
+            Destroy(bee.gameObject); 
+            Destroy(gameObject); 
+            return;
+        }
+
+
+        HiveController hive = other.collider.GetComponent<HiveController>();
+        if (hive != null)
+        {
+            hive.TakeHit(); 
+            Destroy(gameObject); 
+            return;
+        }
+		EnemyController e = other.collider.GetComponent<EnemyController>();
         if (e != null)
         {
             e.Fix();
