@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1a146f5cc5c384c8a91ac75bcd71bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedClip: {fileID: 0}
+  collectedClip: {fileID: 8300000, guid: ffc7836ef8ac5a043b51338a3b0c1ac7, type: 3}
 --- !u!1 &5472719848288765965
 GameObject:
   m_ObjectHideFlags: 0

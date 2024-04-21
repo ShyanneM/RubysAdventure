@@ -37,7 +37,7 @@ public class RubyController : MonoBehaviour
     private bool canDash = true;
     private TrailRenderer trailRenderer;
     public AudioClip dashSound;
-	//slow
+	//slow by Shyanne Murdock
     private bool isSlowed = false;
     private float originalSpeed;
     private float slowDuration = 3f;

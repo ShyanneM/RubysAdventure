@@ -8,19 +8,19 @@ public class GameManager : MonoBehaviour
 {
     public Image youWinText;
     public Image youLostText;
-    public GameObject playerObject; // Reference to the player object to disable movement
+    public GameObject playerObject; 
     bool gameEnded = false;
 
     void Start()
     {
-        // Disable win and lose text at start
+        
         youWinText.gameObject.SetActive(false);
         youLostText.gameObject.SetActive(false);
     }
 
     public void CheckWinCondition()
     {
-        // all robots are fixed when there are no GameObjects tagged "Enemy" in the scene
+        
         if (!GameObject.FindGameObjectWithTag("Enemy") && !gameEnded)
         {
             EndGame(true);
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         EndGame(false);
     }
 
-    public void EndGame(bool win) //made public so Enemy Controller can access
+    public void EndGame(bool win) 
     {
         gameEnded = true;
 
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         {
             youLostText.gameObject.SetActive(true);
 
-            playerObject.GetComponent<RubyController>().enabled = false; // Disable player movement
+            playerObject.GetComponent<RubyController>().enabled = false; 
         }
     }
 	
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && gameEnded)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Restart the game
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
 			FlowerScore.scoreCount = 0;
         }
 		
